@@ -1,5 +1,5 @@
-name: 'Ollama GitHub Code Reviewer'
-description: 'Perform code review using Ollama API'
+name: 'Oh llama Code Reviewer'
+description: 'Code review using Ollama Automatically'
 inputs:
   model:
     description: 'Ollama model to use for code review'
