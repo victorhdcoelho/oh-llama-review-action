@@ -1,5 +1,8 @@
 name: 'Oh llama Code Reviewer'
 description: 'Code review using Ollama Automatically'
+branding:
+  icon: eye
+  color: yellow
 inputs:
   model:
     description: 'Ollama model to use for code review'
