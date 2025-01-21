@@ -73,8 +73,7 @@ runs:
           content=${content//\'/\'\'}
           content=${content//\"/\\\"}
           content=$(echo "$content" | tr '\n' ' ')
-          review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "'"${{ inputs.model }}"'", "prompt": "Atuar como CodeGuard com profundo conhecimento em desenvolvimento de software; revise a alteração dos arquivos de solicitação pull abaixo para um projeto escrito em python. Sempre comece suas sugestões com Como CodeGuard, aqui estão minhas sugestões e mencione o(s) nome(s) do(s) arquivo(s). Forneça sugestões sobre como tornar o código mais legível, fácil de manter e seguro, incluindo números de linha em cada sugestão. forneça apenas trechos de código de uma linha correspondentes a essas linhas:\n\n```\n'"${content}"'\n```", "stream": false}' | jq -r '.response')
-
+          review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "${{ inputs.model }}", "prompt": "Como um engenheiro de software, revise o código a seguir, indicando as melhores práticas do SOLID, KISS e arquitetura hexagonal. Caso necessário dar exemplos de refatorações de código possíveis. Faça isso de forma mais resumida possívél:\n\n```\n'"${content}"'\n```", "stream": false}' | jq -r '.response')
           echo $review
 
           if [[ $review == "null" ]]
