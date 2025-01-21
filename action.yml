@@ -73,7 +73,7 @@ runs:
           content=${content//\'/\'\'}
           content=${content//\"/\\\"}
           content=$(echo "$content" | tr '\n' ' ')
-          review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "${{ inputs.model }}", "prompt": "Como um engenheiro de software, revise o código a seguir, indicando as melhores práticas do SOLID, KISS. Caso necessário dar exemplos de refatorações de código possíveis. Faça isso de forma mais resumida possívél:\n\n```\n'"${content}"'\n```", "stream": false}' | jq -r '.response')
+          review=$(curl -s http://127.0.0.1:11434/api/generate -d '{"model": "${{ inputs.model }}", "prompt": "Como um engenheiro de software, revise o código a seguir, indicando as melhores práticas do SOLID, KISS. Caso necessário dar exemplos de refatorações. Usar apenas código não precisa de muitas explicações:\n\n```\n'"${content}"'\n```", "stream": false}' | jq -r '.response')
           echo $review
 
           if [[ $review == "null" ]]
