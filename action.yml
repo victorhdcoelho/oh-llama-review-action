@@ -46,7 +46,7 @@ runs:
         echo ${{ github.token }} | gh auth login --with-token
 
         # Start ollama with nohup, stander and error log write to ollama.log
-        nohup ollama serve > ollama.log 2>&1 &
+        nohup OLLAMA_NUM_PARALLEL=4 ollama serve > ollama.log 2>&1 &
 
         # Wait ollama serve as a service
         for times in {1..10}; do
